@@ -39,7 +39,17 @@ const MenuLinks : Record<string,any> = [
 ];
 
 
-const HeaderStyle = {
+interface IHeaderProps {
+    headerClass : string 
+    containerClass : string 
+    homeClass  :string 
+    homeName : string 
+    navList : Record<string,any>[] 
+    navClass : string 
+    homeUrl : string 
+}
+
+const HeaderStyle : IHeaderProps = {
   headerClass: "border-line-bottom m-b-3",
   containerClass: "framer d-flex justify-between",
   homeClass: "brand-name",
@@ -61,7 +71,7 @@ const HeaderStyle = {
 };
 
 
-const Header = (header : Record<string,any>) => {
+const Header = ({header} : {header : Record<string , any>}) => {
     return (
         <header className={header.headerClass}>
             <section className={header.containerClass}>
@@ -72,23 +82,22 @@ const Header = (header : Record<string,any>) => {
                         </a>
                     </h1>
                 </section>
-                {/* {header.navList.length > 0 && (
+                {header.navList.length > 0 && (
                     <NavList
                         navList={header.navList}
                         navClass={header.navClass}
                     />
-                )} */}
+                )}
             </section>
         </header>
     );
 };
+
 const Home = () => {
   const currentYear = new Date().getFullYear() 
   return (
   <Fragment>
     <Header header={HeaderStyle}/>
-    {/* <h1>Hello, Adeleke Bright </h1> 
-    <p>I am Learning NextJS for a Purpose</p> */}
     <footer className="center-text relative">
      <p className="fixed-bottom"> &copy; Adeleke Bright {currentYear} </p>
     </footer>
