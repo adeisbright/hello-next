@@ -1,5 +1,5 @@
-import { IAvailableGrants } from "./interfaces"
-export const availableGrants : IAvailableGrants[] = [
+import { IGrant } from "./interfaces"
+export const availableGrants : IGrant[] = [
     {
         _id : 1 , 
         title : "Agriculture Grant" , 

@@ -1,5 +1,10 @@
-import { Fragment } from "react"
+"use client"
 
+import { Fragment, useState  , useEffect} from "react"
+import { availableGrants } from "./constant/default-grants"
+import { IAvailableGrants, IGrant } from "./constant/interfaces" 
+import { getData } from "./lib/fetch-helper"
+import { GrantList } from "./features/grants"
 interface INav {
   navList : Record<string,any>[] 
   navClass : string
@@ -94,10 +99,74 @@ const Header = ({header} : {header : Record<string , any>}) => {
 };
 
 const Home = () => {
+  let [grants , setGrants] = useState<IGrant[]>([])
   const currentYear = new Date().getFullYear() 
+    const url = "https://domain.com"
+  const fetchGrants = (url : string) => {
+    getData(url)
+        .then((result) => {
+            console.log(result);
+            if (Array.isArray(result.data)) {
+                setGrants(result.data);
+            }else{
+                setGrants(availableGrants)
+            }
+        })
+        .catch((error) => console.error(error));
+    };
+
+  const filterGrant = (value : any) => {
+    let grants = availableGrants.filter(grant => { 
+        let {title , description} = grant 
+        description = description.toLocaleLowerCase() ;
+        title = title.toLocaleLowerCase() ;
+        value = value.toLocaleLowerCase() ;
+        if(description.includes(value) || title.includes(value)){
+            return grant
+        }
+    })
+
+    if (grants.length > 0){
+        setGrants(grants)
+    }else{
+        setGrants([])
+    }
+}
+
+//removes a grant from the view 
+const removeGrant = (id : number) => {
+   
+    let remainingGrants = grants.filter(
+        grant => grant._id !== id
+    )
+    setGrants(remainingGrants)
+    
+}
+ 
+useEffect(() => {
+    fetchGrants(url);
+}, []);
   return (
   <Fragment>
     <Header header={HeaderStyle}/>
+
+    {
+                grants.length > 0 ? 
+                (
+                
+                    <>
+                        
+                        <h3 className="framer m-b-2">List of Available Grants</h3>
+                        <GrantList 
+                        grants={grants} 
+                        />
+                    </>
+                
+                ) : (
+                    <p className="framer">Loading grants or no grant to display yet</p>
+                )
+            }
+
     <footer className="center-text relative">
      <p className="fixed-bottom"> &copy; Adeleke Bright {currentYear} </p>
     </footer>
