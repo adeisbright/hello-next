@@ -7,7 +7,7 @@ export const GrantList = ({ grants} : {grants : IGrant[]}) => {
         <div className="framer pad-tb-20 d-grid grid-3">
             {grants.map((grant : IGrant) => (
                 <Grant
-                    grant={grant}
+                    grant={grant} 
                 />
             ))}
         </div>
