@@ -2,7 +2,7 @@
 
 import { Fragment, useState  , useEffect} from "react"
 import { availableGrants } from "./constant/default-grants"
-import { IAvailableGrants, IGrant } from "./constant/interfaces" 
+import { IGrant } from "./constant/interfaces" 
 import { getData } from "./lib/fetch-helper"
 import { GrantList } from "./features/grants"
 interface INav {
@@ -101,13 +101,13 @@ const Header = ({header} : {header : Record<string , any>}) => {
 const Home = () => {
   let [grants , setGrants] = useState<IGrant[]>([])
   const currentYear = new Date().getFullYear() 
-    const url = "https://domain.com"
+    const url = "http://localhost:3000/grants"
   const fetchGrants = (url : string) => {
     getData(url)
         .then((result) => {
             console.log(result);
-            if (Array.isArray(result.data)) {
-                setGrants(result.data);
+            if (Array.isArray(result)) {
+                setGrants(result);
             }else{
                 setGrants(availableGrants)
             }

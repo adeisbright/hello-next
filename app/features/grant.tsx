@@ -4,7 +4,7 @@ import { IGrant } from "../constant/interfaces";
 
 export const Grant = ({ grant } : {grant : IGrant}) => {
     return (
-        <div className="relative" key={grant.index}>
+        <div className="relative" key={grant._id}>
             <div className="card-body m-b-1">
                 <h3>
                     <Link className="no-decoration" href={"/grants/" + grant._id}>
