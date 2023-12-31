@@ -1,3 +1,4 @@
+import { SubmitButton } from "./submit-button"
 
 const getData = async () => {
     const url = "http://localhost:3000/grants"
@@ -11,6 +12,23 @@ const getData = async () => {
 }
 const Page = async ({ params }: { params: { slug: string } }) => {
     const data = await getData() 
-    return <div>My Post: {params.slug}</div>
+    async function createBlog(formData :FormData){
+        "use server"
+
+        const rawFormData = {
+            customerId: formData.get('customerId'),
+            amount: formData.get('amount'),
+            status: formData.get('status'),
+        }
+    }
+    return (
+        <>
+            <div>My Post: {params.slug}</div>
+            <form action={createBlog}>
+                <input type="text" name="field-name" />
+                <SubmitButton/>
+            </form>
+        </>
+    )
 }
 export default Page 
