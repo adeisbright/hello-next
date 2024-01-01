@@ -28,7 +28,7 @@ export const Signup = () => {
             required 
             />
           {/* ... */}
-          <p aria-live="polite" className="sr-only">
+          <p aria-live="polite">
             {state?.message}
           </p>
           <SubmitButton/>

@@ -29,11 +29,22 @@ export const addFounder = async (prevState : any , formData : FormData) => {
         }
     }
     const rawFormData = {
-        name: formData.get('name'),
-        email : formData.get("email")
+        title: formData.get('name'),
+        description : formData.get("email")
     }
 
-    console.log(rawFormData)
+
+    const url = "http://localhost:3000/grants"
+    const res =  await fetch(url , {
+        method : "POST",
+        body: JSON.stringify(rawFormData),
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+   })
+   const data = await res.json() 
+   console.log(data)
     return {
         message: 'Completed',
     }
