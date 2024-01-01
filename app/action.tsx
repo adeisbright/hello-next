@@ -44,9 +44,6 @@ export const addFounder = async (prevState : any , formData : FormData) => {
         return {
             message : "Error"
         }
-    }finally{
-        revalidatePath("/founders") //This allows you to purge the data that is cache for a particular path
-        redirect("/")
     }
 }
 
