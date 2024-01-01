@@ -13,6 +13,7 @@ export const Signup = () => {
         <>
             <ErrorBoundary>
                 <form action={formAction} >
+                    <h4>{process.env.NEXT_PUBLIC_APP_ID}</h4>
                 <label htmlFor="email">Email</label>
                 <input
                     type="email" 
