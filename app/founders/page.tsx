@@ -4,6 +4,7 @@ import { SubmitButton } from "./submit-button"
 import { addFounder } from "../action"
 import { Signup } from "./signup"
 import LikeButton from "./like-button"
+import { ViewCount } from "./count-views"
 const Page = () => {
     // const addFounder = async (formData : FormData) => {
     //     "use server" 
@@ -22,6 +23,7 @@ const Page = () => {
                 </form> */}
                 <Signup/>
                 <LikeButton initialLikes={0}/>
+                <ViewCount initialViews={0}/>
                 <Link href="/grants">Visit Grants</Link>
             </main>
         </Fragment>
