@@ -6,7 +6,7 @@ export const GrantForm = () => {
     const [description , setDescription] = useState<string>("") 
 
     const url = "http://localhost:3000/grants"
-    const handleFormSubmit = async (event  : FormEvent) => {
+    const handleFormSubmit = async (event  : FormEvent<HTMLFormElement>) => {
         try{
             event.preventDefault() 
             if(title && description){
