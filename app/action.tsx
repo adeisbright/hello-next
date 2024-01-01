@@ -4,8 +4,9 @@ import { redirect } from 'next/navigation'
 import {z} from "zod" 
 
 //This action will be attached to our founder creation form 
-export const addFounder = async (prevState : any , formData : FormData) => {
+export const addFounder = async (prevState : Record<string,any> , formData : FormData) => {
     try{
+        console.log(prevState)
         const schema = z.object({
             email : z.string({
                 invalid_type_error : "Invalid Email"
