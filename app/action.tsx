@@ -49,3 +49,9 @@ export const addFounder = async (prevState : any , formData : FormData) => {
         message: 'Completed',
     }
 }
+
+export const incrementLike = async (arg  :number) : Promise<number> => {
+    console.log(arg)
+    const result  = arg + 1 
+    return result 
+}

@@ -3,6 +3,7 @@ import { Fragment } from "react"
 import { SubmitButton } from "./submit-button"
 import { addFounder } from "../action"
 import { Signup } from "./signup"
+import LikeButton from "./like-button"
 const Page = () => {
     // const addFounder = async (formData : FormData) => {
     //     "use server" 
@@ -20,6 +21,7 @@ const Page = () => {
                     <SubmitButton/>
                 </form> */}
                 <Signup/>
+                <LikeButton initialLikes={0}/>
                 <Link href="/grants">Visit Grants</Link>
             </main>
         </Fragment>
