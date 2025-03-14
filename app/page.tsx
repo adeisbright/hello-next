@@ -44,18 +44,7 @@ const HeaderStyle = {
   containerClass: "framer d-flex justify-between",
   homeClass: "brand-name",
   homeName: "Heirs Grant",
-  navList: [
-    {
-        to: "/about",
-        title: "About",
-        classTag: "user-link",
-    },
-    {
-        to: "/login",
-        title: "Login",
-        classTag: "user-link login",
-    },
-  ],
+  navList: MenuLinks,
   navClass: "main-nav pad-5",
   homeUrl: "/",
 };
@@ -71,6 +60,7 @@ const Header = (header : Record<string,any>) => {
                             {header.homeName}
                         </a>
                     </h1>
+                    <p>Show Something {header.homeUrl}</p>
                 </section>
                 {/* {header.navList.length > 0 && (
                     <NavList
@@ -87,8 +77,8 @@ const Home = () => {
   return (
   <Fragment>
     <Header header={HeaderStyle}/>
-    {/* <h1>Hello, Adeleke Bright </h1> 
-    <p>I am Learning NextJS for a Purpose</p> */}
+    <h1>Hello, Adeleke Bright </h1> 
+    <p>I am Learning NextJS for a Purpose</p>
     <footer className="center-text relative">
      <p className="fixed-bottom"> &copy; Adeleke Bright {currentYear} </p>
     </footer>
