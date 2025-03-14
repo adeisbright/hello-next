@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Fragment } from "react";
-import styles from "./grant.module.css";
+import styles from "@/app/grants/grant.module.css";
 import { GrantForm } from "./create-grant";
 const Page = () => {
   return (
